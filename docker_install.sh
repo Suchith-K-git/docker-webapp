@@ -1,14 +1,27 @@
 #!/bin/bash
 
+# Update and install prerequisites
 sudo yum update -y
-sudo yum search docker
-sudo yum info docker
-sudo yum install -y docker
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
-sudo systemctl status docker.service
-docker --version
-sudo yum install git -y
-sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo yum install -y curl wget git
+
+# Install Docker
+sudo amazon-linux-extras install docker -y
+sudo service docker start
+sudo usermod -aG docker $USER
+
+# Enable Docker to start on boot
+sudo systemctl enable docker
+
+# Install Docker Compose
+DOCKER_COMPOSE_VERSION="v2.30.3"
+sudo curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+# Set executable permissions for Docker Compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+# Verify Docker and Docker Compose installations
+echo "Verifying Docker installation..."
+docker --version
+
+echo "Verifying Docker Compose installation..."
 docker-compose --version
