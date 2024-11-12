@@ -1,6 +1,6 @@
 ---
 - name: Setup Docker and run container on Ansible worker (Amazon Linux 2)
-  hosts: dev
+  hosts: demo
   become: yes
   user: ansible
   connection: ssh
