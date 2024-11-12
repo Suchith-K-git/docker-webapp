@@ -29,14 +29,14 @@
       ignore_errors: yes
     
     - name: Remove existing image if present using docker command
-      command: docker rmi vithran21/tomcat:v1
+      command: docker rmi suchithk/tomcat:v1
       ignore_errors: yes
 
     - name: Pull Docker image using docker command
-      command: docker pull vithran21/tomcat:v1
+      command: docker pull suchithk/tomcat:v1
 
     - name: Run Docker container using docker command
-      command: docker run -d -p 8080:8080 --name webapp vithran21/tomcat:v1
+      command: docker run -d -p 8080:8080 --name webapp suchithk/tomcat:v1
 
     - name: Check Docker container status using docker command
       command: docker ps -a
