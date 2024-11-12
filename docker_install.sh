@@ -12,12 +12,9 @@ sudo usermod -aG docker $USER
 # Enable Docker to start on boot
 sudo systemctl enable docker
 
-# Install Docker Compose
-DOCKER_COMPOSE_VERSION="v2.30.3"
-sudo curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-# Set executable permissions for Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
 
 # Verify Docker and Docker Compose installations
 echo "Verifying Docker installation..."
